@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
+using WordStats;
+
 namespace WordStatsTests
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+
     }
 }
