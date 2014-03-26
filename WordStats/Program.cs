@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*******************
+ * Ross Dougherty
+ * 2014-03-25
+ ******************/
 
-
-//http://www.puzzlers.org/pub/wordlists/enable1.txt
-//http://www.puzzlers.org/dokuwiki/doku.php?id=solving%3awordlists%3aabout%3astart
+using System;
 
 namespace LetterStats
 {
@@ -14,10 +11,12 @@ namespace LetterStats
     {
         static void Main(string[] args)
         {
+            //This word list was obtained from
+            //http://www.puzzlers.org/pub/wordlists/enable1.txt
             var words = System.IO.File.ReadAllLines(@"..\..\App_Data\enable1.txt");
 
+            //Create the statistics collection and print it out
             var collection = new LetterStatCollection(words);
-
             Console.Write(collection.ToString());
 
             Console.ReadLine();

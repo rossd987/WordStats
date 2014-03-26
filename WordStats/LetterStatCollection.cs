@@ -1,49 +1,91 @@
-﻿using System;
+﻿/*******************
+ * Ross Dougherty
+ * 2014-03-25
+ ******************/
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LetterStats
 {
-    public class LetterStatCollection : SortedList<char, LetterStat>
+    /// <summary>
+    /// Keeps statistics for a collection of letters
+    /// </summary>
+    public class LetterStatCollection : SortedList<char, LetterStatistics>
     {
+        /// <summary>
+        /// Initialize an empty LetterStatCollection
+        /// </summary>
         public LetterStatCollection() { }
 
+        /// <summary>
+        /// Initialize a LetterStatCollection with a set of words
+        /// </summary>
+        /// <param name="words">An array of words to initilize the collection with</param>
         public LetterStatCollection(string[] words)
         {
             foreach (var word in words)
             {
+                CheckBlank(word);
                 AddWord(word);
             }
         }
 
+        /// <summary>
+        /// Initialize a LetterStatCollection with a single word
+        /// </summary>
+        /// <param name="words">An word to initilize the collection with</param>
         public LetterStatCollection(string word)
         {
+            CheckBlank(word);
             AddWord(word);
         }
 
+        /// <summary>
+        /// Intigrate a word into the collection
+        /// </summary>
+        /// <param name="word"></param>
         public void Add(string word)
         {
+            CheckBlank(word);
             AddWord(word);
         }
 
+        /// <summary>
+        /// Check for blank words
+        /// </summary>
+        void CheckBlank(string word)
+        {
+            if (string.IsNullOrEmpty(word))
+            {
+                throw new ArgumentException("Blank word encountered");
+            }
+        }
+
+        /// <summary>
+        /// Get the statistics for this word and update the collection
+        /// </summary>
+        /// <param name="word"></param>
         void AddWord(string word)
         {
             var beginLetter = word[0];
             var endLetter = word[word.Length - 1];
 
+            //Add the starting letter if it is not in the collection yet
             if (!this.ContainsKey(beginLetter))
             {
-                var l = new LetterStat(beginLetter, word);
+                var l = new LetterStatistics(beginLetter, word);
                 this.Add(beginLetter, l);
             }
+
+            //Update the letter with the new word
             else
             {
                 var l = this[beginLetter];
                 l.BeginWith++;
-                l.TotalLength += word.Length;
                 l.WordCount++;
+                l.UpdateAverage(word.Length);
 
                 if (string.IsNullOrEmpty(l.ShortestWord) || l.ShortestWord.Length > word.Length)
                     l.ShortestWord = word;
@@ -52,9 +94,10 @@ namespace LetterStats
                     l.LongestWord = word;
             }
 
+            //Update the ending letter statistics
             if (!this.ContainsKey(endLetter))
             {
-                var l = new LetterStat(endLetter);
+                var l = new LetterStatistics(endLetter);
                 l.EndWith = 1;
                 this.Add(endLetter, l);
             }
@@ -65,6 +108,9 @@ namespace LetterStats
             }
         }
 
+        /// <summary>
+        /// Convert the collection to a string for printing
+        /// </summary>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
