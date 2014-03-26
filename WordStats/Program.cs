@@ -17,7 +17,7 @@ namespace LetterStats
             //http://www.puzzlers.org/pub/wordlists/enable1.txt
             var path = @"..\..\App_Data\enable1.txt";
 
-            var collection = new LetterStatCollection();
+            var collection = new LetterStatisticsCollection();
             
             //Read in data from the file and add it to the statistics collection
 

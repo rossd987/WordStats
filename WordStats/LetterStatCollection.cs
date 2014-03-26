@@ -12,18 +12,18 @@ namespace LetterStats
     /// <summary>
     /// Keeps statistics for a collection of letters
     /// </summary>
-    public class LetterStatCollection : SortedList<char, LetterStatistics>
+    public class LetterStatisticsCollection : SortedList<char, LetterStatistics>
     {
         /// <summary>
         /// Initialize an empty LetterStatCollection
         /// </summary>
-        public LetterStatCollection() { }
+        public LetterStatisticsCollection() { }
 
         /// <summary>
         /// Initialize a LetterStatCollection with a set of words
         /// </summary>
         /// <param name="words">An array of words to initilize the collection with</param>
-        public LetterStatCollection(string[] words)
+        public LetterStatisticsCollection(string[] words)
         {
             foreach (var word in words)
             {
@@ -35,7 +35,7 @@ namespace LetterStats
         /// Initialize a LetterStatCollection with a single word
         /// </summary>
         /// <param name="words">An word to initilize the collection with</param>
-        public LetterStatCollection(string word)
+        public LetterStatisticsCollection(string word)
         {
             AddWord(word);
         }

@@ -18,7 +18,7 @@ namespace LetterStatsTests
         {
             string[] words = { "a", "", "b" };
 
-            var collection = new LetterStatCollection(words);
+            var collection = new LetterStatisticsCollection(words);
 
             Assert.AreEqual(2, collection.Count);
         }
@@ -27,7 +27,7 @@ namespace LetterStatsTests
         public void SingleLetter()
         {
             var word = "a";
-            var collection = new LetterStatCollection(word);
+            var collection = new LetterStatisticsCollection(word);
 
             Assert.AreEqual("a", collection['a'].LongestWord);
             Assert.AreEqual("a", collection['a'].ShortestWord);
@@ -40,7 +40,7 @@ namespace LetterStatsTests
         public void SingleWord()
         {
             var word = "aa";
-            var collection = new LetterStatCollection(word);
+            var collection = new LetterStatisticsCollection(word);
 
             Assert.AreEqual("aa", collection['a'].LongestWord);
             Assert.AreEqual("aa", collection['a'].ShortestWord);
@@ -57,7 +57,7 @@ namespace LetterStatsTests
                                "aardwolves", "aargh", "aarrgh", "aarrghh", "aas", 
                                "aasvogel", "aasvogels" };
 
-            var collection = new LetterStatCollection(words);
+            var collection = new LetterStatisticsCollection(words);
 
             Assert.AreEqual("aardwolves", collection['a'].LongestWord);
             Assert.AreEqual("aa", collection['a'].ShortestWord);
@@ -81,7 +81,7 @@ namespace LetterStatsTests
                                "azygoses", "azygous", "ba", "baa", "baaed", 
                                "baaing", "baal", "baalim", "baalism", "baalisms" };
 
-            var collection = new LetterStatCollection(words);
+            var collection = new LetterStatisticsCollection(words);
 
             Assert.AreEqual("azurites", collection['a'].LongestWord);
             Assert.AreEqual("aab", collection['a'].ShortestWord);
