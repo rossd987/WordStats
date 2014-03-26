@@ -27,7 +27,6 @@ namespace LetterStats
         {
             foreach (var word in words)
             {
-                //CheckBlank(word);
                 AddWord(word);
             }
         }
@@ -38,7 +37,6 @@ namespace LetterStats
         /// <param name="words">An word to initilize the collection with</param>
         public LetterStatCollection(string word)
         {
-            //CheckBlank(word);
             AddWord(word);
         }
 
@@ -49,7 +47,6 @@ namespace LetterStats
         {
             foreach (var word in words)
             {
-                //CheckBlank(word);
                 AddWord(word);
             }
         }
@@ -59,19 +56,7 @@ namespace LetterStats
         /// </summary>
         public void Add(string word)
         {
-            //CheckBlank(word);
             AddWord(word);
-        }
-
-        /// <summary>
-        /// Check for blank words
-        /// </summary>
-        void CheckBlank(string word)
-        {
-            if (string.IsNullOrEmpty(word))
-            {
-                throw new ArgumentException("Blank word encountered");
-            }
         }
 
         /// <summary>
