@@ -17,17 +17,10 @@ namespace LetterStatsTests
         public void Blank()
         {
             string[] words = { "a", "", "b" };
-            string message = "";
-            try
-            {
-                var collection = new LetterStatCollection(words);
-            }
-            catch (ArgumentException ex)
-            {
-                message = ex.Message;
-            }
 
-            Assert.AreEqual("Blank word encountered", message);
+            var collection = new LetterStatCollection(words);
+
+            Assert.AreEqual(2, collection.Count);
         }
 
         [TestMethod]

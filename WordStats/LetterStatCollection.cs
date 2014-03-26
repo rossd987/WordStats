@@ -27,7 +27,7 @@ namespace LetterStats
         {
             foreach (var word in words)
             {
-                CheckBlank(word);
+                //CheckBlank(word);
                 AddWord(word);
             }
         }
@@ -38,17 +38,28 @@ namespace LetterStats
         /// <param name="words">An word to initilize the collection with</param>
         public LetterStatCollection(string word)
         {
-            CheckBlank(word);
+            //CheckBlank(word);
             AddWord(word);
+        }
+
+        /// <summary>
+        /// Intigrate an array of words into the collection
+        /// </summary>
+        public void Add(string[] words)
+        {
+            foreach (var word in words)
+            {
+                //CheckBlank(word);
+                AddWord(word);
+            }
         }
 
         /// <summary>
         /// Intigrate a word into the collection
         /// </summary>
-        /// <param name="word"></param>
         public void Add(string word)
         {
-            CheckBlank(word);
+            //CheckBlank(word);
             AddWord(word);
         }
 
@@ -69,6 +80,8 @@ namespace LetterStats
         /// <param name="word"></param>
         void AddWord(string word)
         {
+            if (string.IsNullOrEmpty(word)) return;
+
             var beginLetter = word[0];
             var endLetter = word[word.Length - 1];
 
