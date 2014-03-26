@@ -44,7 +44,19 @@ namespace LetterStats
         public int WordCount { get; set; }
         public double AverageLength
         {
-            get { return Math.Round((double)TotalLength / WordCount, 2); }
+            get { return (double)TotalLength / WordCount; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}, {4}, {5:0.00}",
+                    this.Letter,
+                    this.BeginWith,
+                    this.EndWith,
+                    this.ShortestWord,
+                    this.LongestWord,
+                    this.AverageLength
+                    );
         }
     }
 }

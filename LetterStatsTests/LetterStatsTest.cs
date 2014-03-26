@@ -49,6 +49,14 @@ namespace LetterStatsTests
             Assert.AreEqual(19, collection['a'].BeginWith);
             Assert.AreEqual(1, collection['a'].EndWith);
             Assert.AreEqual(5.84, collection['a'].AverageLength);
+            Assert.AreEqual(4, collection['h'].EndWith);
+            Assert.AreEqual(1, collection['d'].EndWith);
+            Assert.AreEqual(1, collection['g'].EndWith);
+            Assert.AreEqual(7, collection['s'].EndWith);
+            Assert.AreEqual(2, collection['l'].EndWith);
+            Assert.AreEqual(1, collection['i'].EndWith);
+            Assert.AreEqual(1, collection['k'].EndWith);
+            Assert.AreEqual(1, collection['f'].EndWith);
         }
     }
 }

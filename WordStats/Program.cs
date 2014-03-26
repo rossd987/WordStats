@@ -14,23 +14,11 @@ namespace LetterStats
     {
         static void Main(string[] args)
         {
-            var charList = new SortedList<char, LetterStat>();
             var words = System.IO.File.ReadAllLines(@"..\..\App_Data\enable1.txt");
 
             var collection = new LetterStatCollection(words);
 
-
-            foreach (var letter in collection)
-            {
-                Console.WriteLine(string.Format("{0} - {1} - {2} - {3} - {4} - {5}",
-                    letter.Value.Letter,
-                    letter.Value.BeginWith,
-                    letter.Value.EndWith,
-                    letter.Value.ShortestWord,
-                    letter.Value.LongestWord,
-                    letter.Value.AverageLength
-            ));
-            }
+            Console.Write(collection.ToString());
 
             Console.ReadLine();
         }

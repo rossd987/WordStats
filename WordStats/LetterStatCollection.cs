@@ -64,5 +64,18 @@ namespace LetterStats
                 l.EndWith++;
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Letter, Start With, End With, Shortest, Longest, Avg Length");
+            foreach (var letter in this)
+            {
+                sb.AppendLine(letter.Value.ToString());
+            }
+
+            return sb.ToString();
+        }
     }
 }
